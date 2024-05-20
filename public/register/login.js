@@ -1,16 +1,17 @@
 const Nome = document.getElementById("Nome");
 const pass = document.getElementById("Password");
 
-const RegisterButton = document.getElementById("Register");
+const LoginButton = document.getElementById("Login");
 
-const register = (arrayUtenze) => {
+
+const Login = (ArrayUtenze) => {
   return new Promise((resolve, reject) => {
-    fetch("/signin", {
+    fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(arrayUtenze),
+      body: JSON.stringify(ArrayUtenze),
     })
       .then((response) => response.json())
       .then((json) => {
@@ -22,19 +23,22 @@ const register = (arrayUtenze) => {
   });
 };
 
-RegisterButton.onclick = () => {
-  let arrayutenze = {
+
+LoginButton.onclick = () => {
+  let saveArray = {
     username: Nome.value,
     password: pass.value,
   };
 
-  register(arrayutenze)
+    Login(saveArray)
     .then((response) => {
       console.log("Response from server:", response);
+      if (response.result === "true") {
+          window.location.href = "/homepage/homepage.html";
+        }
     })
     .catch((error) => {
       console.error("Error:", error);
+      console.log("error");
     });
-
-  window.location.href = "/login/login.html";
 };

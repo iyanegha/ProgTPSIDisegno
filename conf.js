@@ -5,7 +5,7 @@ module.exports = {
    "host": "mysqlbaldonado-progtpsiandrea.c.aivencloud.com",
    "user": "avnadmin",
    "password": "AVNS_2Ocn2UWOIPeeTblPYnJ",
-   "database": "defaultdb",
+   "database": "progettoDisegno",
     "port": 22834,
   "ssl": {
     "ca" : fs.readFileSync('ca.pem'),
